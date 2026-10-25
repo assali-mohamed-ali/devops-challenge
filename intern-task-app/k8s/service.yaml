@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: intern-task-app
+  labels:
+    app: intern-task-app
+spec:
+  type: ClusterIP
+  selector:
+    app: intern-task-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
