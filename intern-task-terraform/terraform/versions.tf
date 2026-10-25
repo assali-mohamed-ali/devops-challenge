@@ -1,0 +1,20 @@
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+
+  # The challenge explicitly requires a plan with fake credentials.
+  # This module is validated/planned only; it is not applied.
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+  skip_region_validation      = true
+}
